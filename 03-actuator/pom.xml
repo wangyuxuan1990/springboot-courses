@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.wangyuxuan</groupId>
-	<artifactId>01-primary</artifactId>
+	<artifactId>03-actuator</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
@@ -18,6 +18,12 @@
 	</properties>
 
 	<dependencies>
+		<!--actuator依赖-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
