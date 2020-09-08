@@ -27,4 +27,11 @@ public class StudentServiceImpl implements StudentService {
         }
         dao.insertStudent(student);
     }
+
+//    @Transactional(rollbackFor = Exception.class)
+//    @Override
+//    public void addStudent(Student student) throws Exception {
+//        dao.insertStudent(student);
+//    }
+
 }
