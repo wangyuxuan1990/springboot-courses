@@ -22,7 +22,7 @@ public class SomeController {
     private StudentService service;
 
     @PostMapping("/register")
-    public String registerHandler(Student student, Model model) {
+    public String registerHandler(Student student, Model model) throws Exception {
         model.addAttribute("student", student);
         service.addStudent(student);
         return "/jsp/welcome.jsp";

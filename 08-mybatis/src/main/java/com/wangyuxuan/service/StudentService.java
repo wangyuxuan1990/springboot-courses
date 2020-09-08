@@ -9,5 +9,5 @@ import com.wangyuxuan.bean.Student;
  */
 public interface StudentService {
 
-    void addStudent(Student student);
+    void addStudent(Student student) throws Exception;
 }
