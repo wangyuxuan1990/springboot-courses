@@ -8,4 +8,12 @@
         insert into student(name, age) values(#{name}, #{age})
     </insert>
 
+    <select id="selectStudentsBelowAge" resultType="Student">
+        select id, name, age from student where $lt;= #{xxx}
+    </select>
+
+    <select id="selectStudentsCount" resultType="int">
+        select count(id) from student
+    </select>
+
 </mapper>
