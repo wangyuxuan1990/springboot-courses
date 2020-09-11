@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -32,11 +33,13 @@ public class SomeController {
     }
 
     @PostMapping("/find")
+    @ResponseBody
     public List<Student> findHandler(int age) {
         return service.findStudentsBelowAge(age);
     }
 
     @GetMapping("/count")
+    @ResponseBody
     public Integer countHandler() {
         return service.findStudentsCount();
     }

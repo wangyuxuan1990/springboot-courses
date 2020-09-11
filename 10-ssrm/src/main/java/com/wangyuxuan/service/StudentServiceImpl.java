@@ -5,10 +5,13 @@ import com.wangyuxuan.dao.StudentDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.redis.core.BoundValueOperations;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author wangyuxuan
@@ -20,6 +23,9 @@ public class StudentServiceImpl implements StudentService {
 
     @Autowired
     private StudentDao dao;
+
+    @Autowired
+    private RedisTemplate<Object, Object> redisTemplate;
 
     @CacheEvict(value = "realTimeCache", allEntries = true)
     @Transactional(rollbackFor = Exception.class)
@@ -44,7 +50,23 @@ public class StudentServiceImpl implements StudentService {
     // 这里要使用双重检测锁机制解决当前代码中可能会存在的热点缓存问题
     @Override
     public Integer findStudentsCount() {
-        return dao.selectStudentsCount();
+        // 获取Redis操作对象
+        BoundValueOperations<Object, Object> ops = redisTemplate.boundValueOps("count");
+        // 从Redis中获取指定key的value
+        Object count = ops.get();
+        // 双重检测
+        if (count == null) {
+            synchronized (this) {
+                count = ops.get();
+                if (count == null) {
+                    // 从DB中查询
+                    count = dao.selectStudentsCount();
+                    // 将查询结果存放到Redis，并指定过期时限
+                    ops.set(count, 10, TimeUnit.SECONDS);
+                }
+            }
+        }
+        return (Integer) count;
     }
 
 }

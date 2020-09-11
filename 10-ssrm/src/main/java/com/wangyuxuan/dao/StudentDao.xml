@@ -9,7 +9,7 @@
     </insert>
 
     <select id="selectStudentsBelowAge" resultType="Student">
-        select id, name, age from student where $lt;= #{xxx}
+        select id, name, age from student where age &lt;= #{xxx}
     </select>
 
     <select id="selectStudentsCount" resultType="int">

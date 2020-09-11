@@ -20,7 +20,7 @@ spring:
 
   # 连接单机Redis
   redis:
-    host: node01
+    host: node02
     port: 6379
 
     # 连接Redis高可用集群
