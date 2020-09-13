@@ -1,6 +1,7 @@
 package com.wangyuxuan.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -16,4 +17,9 @@ public class SomeController {
     public String someHandler() {
         return "hello spring boot world";
     }
+
+//    @GetMapping("/find/{name}")
+//    public String findHandler(@PathVariable("name") String name) {
+//        return "查询指定的学生：" + name;
+//    }
 }

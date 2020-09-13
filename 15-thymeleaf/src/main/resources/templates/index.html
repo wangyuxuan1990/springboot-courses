@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+    <p th:text="${welcome}">这里将要显示数据，但这些文字不显示</p>
+    <div th:text="${welcome}">这里将要显示数据，但这些文字不显示</div>
+    <span th:text="${welcome}">这里将要显示数据，但这些文字不显示</span>
+
+    <hr>
+    <p th:text="${student}">这里将要显示数据，但这些文字不显示</p>
+    <p th:text="${student.name}">这里将要显示数据，但这些文字不显示</p>
+    <p th:text="${student.age}">这里将要显示数据，但这些文字不显示</p>
+
+    <hr>
+    <div th:object="${student}">
+        <p th:text="*{name}">这里将要显示数据，但这些文字不显示</p>
+        <p th:text="*{age}">这里将要显示数据，但这些文字不显示</p>
+    </div>
+
+    <hr>
+    <a th:href="@{'http://localhost:9999/xxx/find/' + ${student.name}}">查询</a>
+    <a th:href="@{|http://localhost:9999/xxx/find/${student.name}|}">查询2</a>
+    <a th:href="@{|/xxx/find/${student.name}|}">查询3</a>
+    <a th:href="@{|find/${student.name}|}">查询4（这个形成的路径是有问题的）</a>
+</body>
+</html>
