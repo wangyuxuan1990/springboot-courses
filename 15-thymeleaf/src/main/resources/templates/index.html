@@ -25,5 +25,69 @@
     <a th:href="@{|http://localhost:9999/xxx/find/${student.name}|}">查询2</a>
     <a th:href="@{|/xxx/find/${student.name}|}">查询3</a>
     <a th:href="@{|find/${student.name}|}">查询4（这个形成的路径是有问题的）</a>
+
+    <hr>
+    <p th:if="${gender} == 'male'">
+        男
+    </p>
+    <p th:if="${gender} != 'male'">
+        女
+    </p>
+
+    <hr>
+    <div th:switch="${student.age/10}">
+        <p th:case="0">儿童</p>
+        <p th:case="1">少年</p>
+        <p th:case="2">青年</p>
+        <p th:case="3">中年</p>
+        <p th:case="4">中年</p>
+        <p th:case="5">中年</p>
+        <p th:case="*">老年</p>
+    </div>
+
+    <hr>
+    <div th:each="stu,xxx:${students}">
+        <!--显示当前遍历对象是第几个，即序号（从1开始计数）-->
+        <div th:text="${xxx.count}"></div>
+        <!--显示当前遍历对象的索引（从0开始计数）-->
+        <div th:text="${xxx.index}"></div>
+        <!--布尔值，显示当前遍历对象是否是第一个-->
+        <div th:text="${xxx.first}"></div>
+        <!--布尔值，显示当前遍历对象是否是最后一个-->
+        <div th:text="${xxx.last}"></div>
+        <!--布尔值，显示当前遍历对象的序号是否是偶数-->
+        <div th:text="${xxx.even}"></div>
+        <!--布尔值，显示当前遍历对象的序号是否是奇数-->
+        <div th:text="${xxx.odd}"></div>
+        <div th:text="${stu.name}"></div>
+        <div th:text="${stu.age}"></div>
+    </div>
+
+    <hr>
+    <div th:each="stu:${students}">
+        <!--显示当前遍历对象是第几个，即序号（从1开始计数）-->
+        <div th:text="${stuStat.count}"></div>
+        <!--显示当前遍历对象的索引（从0开始计数）-->
+        <div th:text="${stuStat.index}"></div>
+        <!--布尔值，显示当前遍历对象是否是第一个-->
+        <div th:text="${stuStat.first}"></div>
+        <!--布尔值，显示当前遍历对象是否是最后一个-->
+        <div th:text="${stuStat.last}"></div>
+        <!--布尔值，显示当前遍历对象的序号是否是偶数-->
+        <div th:text="${stuStat.even}"></div>
+        <!--布尔值，显示当前遍历对象的序号是否是奇数-->
+        <div th:text="${stuStat.odd}"></div>
+        <div th:text="${stu.name}"></div>
+        <div th:text="${stu.age}"></div>
+    </div>
+
+    <hr>
+    <div th:each="entry:${map}">
+        <p th:text="${entryStat.count}"></p>
+        <p th:text="${entry.key}"></p>
+        <p th:text="${entry.value}"></p>
+        <p th:text="${entry.value.name}"></p>
+        <p th:text="${entry.value.age}"></p>
+    </div>
 </body>
 </html>
