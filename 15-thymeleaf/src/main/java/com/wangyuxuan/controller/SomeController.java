@@ -33,6 +33,10 @@ public class SomeController {
         map.put("stu8", new Student("刘八", 28));
         map.put("stu9", new Student("郑九", 29));
         model.addAttribute("map", map);
+        model.addAttribute("welcome", "<h2>Thymeleaf, <br>I'm learning.</h2>");
+        model.addAttribute("attrName", "score");
+        model.addAttribute("attrValue", 99);
+        model.addAttribute("photo", "jianshen4.jpg");
         // 这里的index表示的是Thymeleaf视图页面index.html，但不用写扩展名
         return "index";
     }

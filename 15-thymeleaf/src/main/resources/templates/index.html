@@ -89,5 +89,20 @@
         <p th:text="${entry.value.name}"></p>
         <p th:text="${entry.value.age}"></p>
     </div>
+
+    <hr>
+    <div th:text="${welcome}"></div>
+    <hr>
+    <div th:utext="${welcome}"></div>
+
+    <hr>
+    <input type="text" name="age" value="0"/>
+    <hr>
+    <input type="text" th:name="${attrName}" th:value="${attrValue}"/>
+
+    <hr>
+    <img src="/images/jianshen4.jpg"/>
+    <hr>
+    <img th:src="|/images/${photo}|"/>
 </body>
 </html>
