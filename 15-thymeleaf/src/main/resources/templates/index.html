@@ -104,5 +104,37 @@
     <img src="/images/jianshen4.jpg"/>
     <hr>
     <img th:src="|/images/${photo}|"/>
+
+    <hr>
+    th:inline的取值可以有四种：<br>
+    1)text：内嵌文本，标签体中需要嵌入文本，默认值<br>
+    2)javascript：内嵌脚本，js中需要嵌入动态内容<br>
+    3)css：内嵌样式，css中需要嵌入动态内容<br>
+    4)non：不解析内嵌动态内容<br>
+
+    <p th:inline="text">
+        他的姓名是：[[${student.name}]]
+    </p>
+    <hr>
+    <p>
+        她的姓名是：[[${student.name}]]
+    </p>
+
+    <hr>
+    <script th:inline="javascript" type="text/javascript">
+        alert([[${student.name}]]);
+    </script>
+
+    <hr>
+    <div id="reddiv">
+        我的背景颜色为红色
+    </div>
+    <style>
+        #[[${elementId}]] {
+            width: 500px;
+            height: 100px;
+            background: [[${bgColor}]];
+        }
+    </style>
 </body>
 </html>

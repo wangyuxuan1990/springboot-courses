@@ -37,6 +37,8 @@ public class SomeController {
         model.addAttribute("attrName", "score");
         model.addAttribute("attrValue", 99);
         model.addAttribute("photo", "jianshen4.jpg");
+        model.addAttribute("elementId", "reddiv");
+        model.addAttribute("bgColor", "red");
         // 这里的index表示的是Thymeleaf视图页面index.html，但不用写扩展名
         return "index";
     }
