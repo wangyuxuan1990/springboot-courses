@@ -39,6 +39,10 @@ public class SomeController {
         model.addAttribute("photo", "jianshen4.jpg");
         model.addAttribute("elementId", "reddiv");
         model.addAttribute("bgColor", "red");
+        model.addAttribute("isClose", false);
+        model.addAttribute("school", null);
+        List<String> cities = new ArrayList<>();
+        model.addAttribute("cities", cities);
         // 这里的index表示的是Thymeleaf视图页面index.html，但不用写扩展名
         return "index";
     }

@@ -136,5 +136,32 @@
             background: [[${bgColor}]];
         }
     </style>
+
+    <hr>
+    Thymeleaf包含四种字面常量：文本、数字、布尔值，及null。<br>
+
+    <div>
+        我爱你，<span th:text="'中国'"></span>
+    </div>
+    <div>
+        3.14 + 6 = <span th:text="3.14+6"></span>
+    </div>
+    <div>
+        Thymeleaf中的布尔常量为：true、false及其大小写任意变化形式<br>
+        <span th:if="${isClose} == false">欢迎光临</span>
+        <span th:if="${isClose == FAlse}">欢迎光临2</span>
+    </div>
+    <div>
+        关于null值需要注意：<br>
+        1)若对象未定义，则其值为null<br>
+        2)若对象定定义了，但其值被指定为null，则值为null<br>
+        3)若集合已经被定义（不为null），但其长度为0，此时的集合是不为null的<br>
+        school：<span th:if="${school} == null">对象值为null</span><br>
+        cities：<span th:if="${cities} != null">集合不为空</span><br>
+        country：<span th:if="${country} == null">对象未定义</span><br>
+    </div>
+
+    <hr>
+    <div th:text="|我的姓名是：${student.name}|"></div>
 </body>
 </html>
