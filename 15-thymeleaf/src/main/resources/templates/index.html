@@ -163,5 +163,20 @@
 
     <hr>
     <div th:text="|我的姓名是：${student.name}|"></div>
+
+    <hr>
+    req = <div th:text="${#request.getAttribute('req')}"></div>
+    ses = <div th:text="${#session.getAttribute('ses')}"></div>
+    app = <div th:text="${#servletContext.getAttribute('app')}"></div>
+    contextPath = <div th:text="${#request.getContextPath()}"></div>
+    name = <div th:text="${#request.getParameter('name')}"></div>
+
+    <hr>
+    <div th:text="${#aggregates.sum(nums)}"></div>
+    <hr>
+    <div th:text="${today}"></div>
+    <div th:text="${#dates.format(today, 'yyyy-MM-dd')}"></div>
+    <hr>
+    <div th:text="${#strings.substring(cardId, 6, 14)}"></div>
 </body>
 </html>
