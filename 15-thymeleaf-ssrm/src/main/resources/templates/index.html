@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+    <!--页面中的非杠路径的参照路径是请求路径的资源路径
+        当前请求路径： http://localhost:8888/xxx/some/index
+        资源路径： http://localhost:8888/xxx/some
+        资源名称： index
+
+        当前表单提交的路径为some/register是一个非杠路径，
+        其参照路径为http://localhost:8888/xxx/some，
+        故，其所形成的绝对路径是http://localhost:8888/xxx/some/some/register
+    -->
+    <form th:action="|${#request.getContextPath()}/some/register|" method="post">
+        姓名: <input type="text" name="name"> <br>
+        年龄: <input type="text" name="age"> <br>
+        <input type="submit" value="注册">
+    </form>
+    <hr>
+    <form th:action="|${#request.getContextPath()}/some/find|" method="post">
+        年龄上限: <input type="text" name="age"> <br>
+        <input type="submit" value="查询">
+    </form>
+    <hr>
+    <a th:href="|${#request.getContextPath()}/some/count|">查询学生总人数</a>
+</body>
+</html>
